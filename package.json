@@ -3,7 +3,9 @@
   "workspaces": [
     "auth-app",
     "host-app",
-    "main-app"
+    "main-app",
+    "packages/shared",
+    "packages/UI"
   ],
   "scripts": {
     "bootstrap": "npm install",

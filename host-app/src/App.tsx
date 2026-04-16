@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { sharedUtil } from '@sgx/shared';
 import './index.css';
 
 const AuthApp = lazy(() => import('auth/App').catch(() => ({
@@ -15,6 +16,7 @@ export default function App() {
     <BrowserRouter>
       <div className="min-h-screen bg-slate-50 text-slate-900">
         <header className="border-b border-slate-200 px-6 py-4">
+          <div className="mb-2 text-sm text-slate-600">{sharedUtil()}</div>
           <nav className="flex gap-4">
             <Link className="text-blue-600 hover:underline" to="/auth">
               Auth
