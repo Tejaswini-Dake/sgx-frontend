@@ -14,7 +14,9 @@
     "dev:host": "npm --workspace sgx-host-app run dev",
     "dev:auth": "npm --workspace sgx-auth-app run dev",
     "dev:main": "npm --workspace sgx-main-app run dev",
-    "start": "concurrently \"npm run dev:auth\" \"npm run dev:main\" \"npm run dev:host\""
+    "preview:auth": "npm --workspace sgx-auth-app run preview",
+    "preview:main": "npm --workspace sgx-main-app run preview",
+    "start": "concurrently \"npm run preview:auth\" \"npm run preview:main\" \"npm run dev:host\""
   },
   "dependencies": {
     "@originjs/vite-plugin-federation": "1.4.1",
