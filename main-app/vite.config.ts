@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import federation from '@originjs/vite-plugin-federation';
+import {federation} from '@module-federation/vite';
 
 export default defineConfig({
   server: {
@@ -22,6 +22,7 @@ export default defineConfig({
         'react-router-dom': { singleton: true },
         '@reduxjs/toolkit': { singleton: true },
       },
+      dts: false,
     }),
   ],
   build: {

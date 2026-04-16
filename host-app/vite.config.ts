@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import federation from '@originjs/vite-plugin-federation';
-
+import { federation } from '@module-federation/vite';
+ 
 export default defineConfig({
   server: {
     port: 3000,
@@ -11,8 +11,20 @@ export default defineConfig({
     federation({
       name: 'host',
       remotes: {
-        auth: 'http://localhost:3001/assets/remoteEntry.js',
-        main: 'http://localhost:3002/assets/remoteEntry.js',
+        auth: {
+          type: 'module',
+          name: 'auth',
+          entry: 'http://localhost:3001/remoteEntry.js',
+          entryGlobalName: 'auth',
+          shareScope: 'default',
+        },
+        main: {
+          type: 'module',
+          name: 'main',
+          entry: 'http://localhost:3002/remoteEntry.js',
+          entryGlobalName: 'main',
+          shareScope: 'default',
+        },
       },
       shared: {
         react: { singleton: true },
@@ -20,6 +32,7 @@ export default defineConfig({
         'react-router-dom': { singleton: true },
         '@reduxjs/toolkit': { singleton: true },
       },
+      dts: false,
     }),
   ],
   build: {

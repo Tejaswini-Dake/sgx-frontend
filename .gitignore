@@ -30,3 +30,4 @@ Thumbs.db
 # Vite specific cache
 vite.cache/
 node_modules/.vite/
+.__mf__temp/
