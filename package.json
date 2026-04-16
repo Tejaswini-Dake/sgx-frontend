@@ -5,18 +5,18 @@
     "host-app",
     "main-app",
     "packages/shared",
-    "packages/UI"
+    "packages/ui"
   ],
   "scripts": {
-    "bootstrap": "npm install",
-    "dev:all": "concurrently \"npm run dev:auth\" \"npm run dev:host\" \"npm run dev:main\"",
+    "build:auth": "npm --workspace auth-app run build",
+    "build:main": "npm --workspace main-app run build",
+    "build:remotes": "npm run build:auth && npm run build:main",
     "build": "npm run build --workspaces",
-    "dev:auth": "npm --workspace auth-app run dev",
     "dev:host": "npm --workspace host-app run dev",
-    "dev:main": "npm --workspace main-app run dev",
     "preview:auth": "npm --workspace auth-app run preview",
-    "preview:host": "npm --workspace host-app run preview",
-    "preview:main": "npm --workspace main-app run preview"
+    "preview:main": "npm --workspace main-app run preview",
+    "start:remotes": "concurrently \"npm run preview:auth\" \"npm run preview:main\"",
+    "start": "concurrently \"npm run preview:auth\" \"npm run preview:main\" \"npm run dev:host\""
   },
   "dependencies": {
     "@originjs/vite-plugin-federation": "1.4.1",

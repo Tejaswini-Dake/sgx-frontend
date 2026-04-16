@@ -15,8 +15,8 @@ export default defineConfig({
         main: 'http://localhost:3002/assets/remoteEntry.js',
       },
       shared: {
-        react: { singleton: true },
-        'react-dom': { singleton: true },
+        react: { singleton: true, requiredVersion: '^19.0.0' },
+        'react-dom': { singleton: true, requiredVersion: '^19.0.0' },
         'react-router-dom': { singleton: true },
         '@reduxjs/toolkit': { singleton: true },
       },

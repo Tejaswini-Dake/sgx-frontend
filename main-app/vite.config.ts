@@ -7,6 +7,10 @@ export default defineConfig({
     port: 3002,
     origin: 'http://localhost:3002',
   },
+  preview: {
+    port: 3002,
+    strictPort: true,
+  },
   base: '/',
   plugins: [
     react(),
@@ -17,8 +21,8 @@ export default defineConfig({
         './App': './src/App.tsx',
       },
       shared: {
-        react: { singleton: true },
-        'react-dom': { singleton: true },
+        react: { singleton: true, requiredVersion: '^19.0.0' },
+        'react-dom': { singleton: true, requiredVersion: '^19.0.0' },
         'react-router-dom': { singleton: true },
         '@reduxjs/toolkit': { singleton: true },
       },
@@ -26,5 +30,6 @@ export default defineConfig({
   ],
   build: {
     target: 'esnext',
+    minify: false,
   },
 });
