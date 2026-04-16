@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "workspaces": [
+    "auth-app",
+    "host-app",
+    "main-app"
+  ],
+  "scripts": {
+    "bootstrap": "npm install",
+    "dev:all": "concurrently \"npm run dev:auth\" \"npm run dev:host\" \"npm run dev:main\"",
+    "build": "npm run build --workspaces",
+    "dev:auth": "npm --workspace auth-app run dev",
+    "dev:host": "npm --workspace host-app run dev",
+    "dev:main": "npm --workspace main-app run dev",
+    "preview:auth": "npm --workspace auth-app run preview",
+    "preview:host": "npm --workspace host-app run preview",
+    "preview:main": "npm --workspace main-app run preview"
+  },
+  "dependencies": {
+    "@originjs/vite-plugin-federation": "1.4.1",
+    "@reduxjs/toolkit": "2.11.2",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "react-router-dom": "7.14.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "5.0.0",
+    "@tailwindcss/postcss": "^4.2.2",
+    "concurrently": "^8.2.0",
+    "postcss": "8.5.6",
+    "tailwindcss": "^4.2.2",
+    "typescript": "6.0.2",
+    "vite": "7.3.2"
+  }
+}
