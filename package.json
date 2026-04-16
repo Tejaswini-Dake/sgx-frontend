@@ -1,22 +1,20 @@
 {
   "private": true,
   "workspaces": [
-    "auth-app",
-    "host-app",
-    "main-app",
+    "sgx-auth-app",
+    "sgx-host-app",
+    "sgx-main-app",
     "packages/shared",
     "packages/ui"
   ],
   "scripts": {
-    "build:auth": "npm --workspace auth-app run build",
-    "build:main": "npm --workspace main-app run build",
-    "build:remotes": "npm run build:auth && npm run build:main",
+    "build:auth": "npm --workspace sgx-auth-app run build",
+    "build:main": "npm --workspace sgx-main-app run build",
     "build": "npm run build --workspaces",
-    "dev:host": "npm --workspace host-app run dev",
-    "preview:auth": "npm --workspace auth-app run preview",
-    "preview:main": "npm --workspace main-app run preview",
-    "start:remotes": "concurrently \"npm run preview:auth\" \"npm run preview:main\"",
-    "start": "concurrently \"npm run preview:auth\" \"npm run preview:main\" \"npm run dev:host\""
+    "dev:host": "npm --workspace sgx-host-app run dev",
+    "dev:auth": "npm --workspace sgx-auth-app run dev",
+    "dev:main": "npm --workspace sgx-main-app run dev",
+    "start": "concurrently \"npm run dev:auth\" \"npm run dev:main\" \"npm run dev:host\""
   },
   "dependencies": {
     "@originjs/vite-plugin-federation": "1.4.1",
