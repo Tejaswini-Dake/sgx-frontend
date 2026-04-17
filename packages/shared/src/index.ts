@@ -1,1 +1,1 @@
-export const sharedUtil = () => "shared working";
+export const sharedUtil = () => 'shared working';

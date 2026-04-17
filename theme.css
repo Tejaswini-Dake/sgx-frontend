@@ -1,10 +1,10 @@
 body {
   margin: 0;
-  font-family: Lato, HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Lato, HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
- 
+
 #root {
   width: 100%;
   min-height: 100vh;
@@ -12,65 +12,65 @@ body {
 
 :root {
   /* SGX Color Palette */
-  --sgx-white: #FFFFFF;
-  --sgx-blue: #0D47A1;
-  --sgx-green: #00A651;
-  --sgx-dark-green: #00633D;
-  --sgx-yellow: #FFCC00;
-  --sgx-light-blue: #00ACC1;
-  --sgx-red: #D32F2F;
-  --sgx-purple: #7B1FA2;
+  --sgx-white: #ffffff;
+  --sgx-blue: #0d47a1;
+  --sgx-green: #00a651;
+  --sgx-dark-green: #00633d;
+  --sgx-yellow: #ffcc00;
+  --sgx-light-blue: #00acc1;
+  --sgx-red: #d32f2f;
+  --sgx-purple: #7b1fa2;
   --sgx-dark-grey: #424242;
-  --sgx-light-grey: #BDBDBD;
-  --sgx-bg-blue: #E3F2FD;
-  --sgx-bg-green: #E8F5E9;
-  --sgx-bg-light-grey: #F5F5F5;
-  --sgx-bg-light-blue: #B3E5FC;
-  
+  --sgx-light-grey: #bdbdbd;
+  --sgx-bg-blue: #e3f2fd;
+  --sgx-bg-green: #e8f5e9;
+  --sgx-bg-light-grey: #f5f5f5;
+  --sgx-bg-light-blue: #b3e5fc;
+
   /* Other theme variables */
-  --background: #FFFFFF;
+  --background: #ffffff;
   --foreground: #000000;
-  --card: #FFFFFF;
+  --card: #ffffff;
   --card-foreground: #000000;
-  --popover: #FFFFFF;
+  --popover: #ffffff;
   --popover-foreground: #000000;
-  --primary: #0D47A1;
-  --primary-foreground: #FFFFFF;
-  --secondary: #7B1FA2;
-  --secondary-foreground: #FFFFFF;
-  --muted: #E0E0E0;
+  --primary: #0d47a1;
+  --primary-foreground: #ffffff;
+  --secondary: #7b1fa2;
+  --secondary-foreground: #ffffff;
+  --muted: #e0e0e0;
   --muted-foreground: #757575;
-  --accent: #00ACC1;
-  --accent-foreground: #FFFFFF;
-  --destructive: #D32F2F;
-  --destructive-foreground: #FFFFFF;
-  --success: #00A651;
-  --success-foreground: #FFFFFF;
-  --warning: #FFCC00;
+  --accent: #00acc1;
+  --accent-foreground: #ffffff;
+  --destructive: #d32f2f;
+  --destructive-foreground: #ffffff;
+  --success: #00a651;
+  --success-foreground: #ffffff;
+  --warning: #ffcc00;
   --warning-foreground: #000000;
-  --info: #00ACC1;
-  --info-foreground: #FFFFFF;
-  --border: #E0E0E0;
-  --input: #FFFFFF;
-  --input-background: #F5F5F5;
-  --switch-background: #E0E0E0;
-  --ring: #0D47A1;
-  --chart-1: #0D47A1;
-  --chart-2: #00A651;
-  --chart-3: #00ACC1;
-  --chart-4: #7B1FA2;
-  --chart-5: #D32F2F;
+  --info: #00acc1;
+  --info-foreground: #ffffff;
+  --border: #e0e0e0;
+  --input: #ffffff;
+  --input-background: #f5f5f5;
+  --switch-background: #e0e0e0;
+  --ring: #0d47a1;
+  --chart-1: #0d47a1;
+  --chart-2: #00a651;
+  --chart-3: #00acc1;
+  --chart-4: #7b1fa2;
+  --chart-5: #d32f2f;
   --radius: 6px;
-  --sidebar: #FFFFFF;
+  --sidebar: #ffffff;
   --sidebar-foreground: #000000;
-  --sidebar-primary: #0D47A1;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #00ACC1;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #E0E0E0;
-  --sidebar-ring: #0D47A1;
+  --sidebar-primary: #0d47a1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #00acc1;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e0e0e0;
+  --sidebar-ring: #0d47a1;
 }
- 
+
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -96,17 +96,17 @@ body {
   --color-info-foreground: var(--info-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
- 
+
   --color-input-background: var(--input-background);
   --color-switch-background: var(--switch-background);
   --color-ring: var(--ring);
- 
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
- 
+
   /* SGX Color Utilities */
   --color-sgx-white: var(--sgx-white);
   --color-sgx-blue: var(--sgx-blue);
@@ -122,12 +122,12 @@ body {
   --color-sgx-bg-green: var(--sgx-bg-green);
   --color-sgx-bg-light-grey: var(--sgx-bg-light-grey);
   --color-sgx-bg-light-blue: var(--sgx-bg-light-blue);
- 
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
- 
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -136,34 +136,34 @@ body {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
- 
+
   /* === HeroUI Theme Overrides (SGX Branding) === */
- 
+
   /* Primary - SGX Blue */
   --color-primary: var(--color-sgx-blue);
- 
+
   /* Secondary - SGX Purple */
   --color-secondary: var(--color-sgx-purple);
- 
+
   /* Success - SGX Green */
   --color-success: var(--color-sgx-green);
- 
+
   /* Warning - SGX Yellow */
   --color-warning: var(--color-sgx-yellow);
- 
+
   /* Danger - SGX Red */
   --color-danger: var(--color-sgx-red);
- 
+
   /* Default/Neutral - SGX Grey */
   --color-default: var(--color-sgx-light-grey);
 }
- 
+
 /* Accordion Gradient Styles */
 .accordion-button-gradient {
-  background: linear-gradient(to right, #E4EFFF, #F2F2F2);
+  background: linear-gradient(to right, #e4efff, #f2f2f2);
   transition: background 0.3s ease;
 }
- 
+
 .accordion-button-gradient:hover {
-  background: linear-gradient(to right, #D0E5FF, #E4EFFF);
+  background: linear-gradient(to right, #d0e5ff, #e4efff);
 }
