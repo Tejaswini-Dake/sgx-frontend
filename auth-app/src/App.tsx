@@ -1,5 +1,6 @@
 import { Button } from '@sgx/ui';
 import { sharedUtil } from '@sgx/shared';
+import './index.css';
 
 export default function App() {
   return (

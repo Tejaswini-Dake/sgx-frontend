@@ -1,3 +1,4 @@
+import './index.css';
 import { Button } from '@sgx/ui';
 import { sharedUtil } from '@sgx/shared';
 import { Link, Route, Routes } from 'react-router-dom';
