@@ -24,8 +24,8 @@ This architecture uses a host/remote pattern:
 In this repo:
 
 - `host` declares remote endpoints for `auth` and `main`
-- `auth` exposes its authentication UI via Module Federation
-- `main` exposes the main application UI via Module Federation
+- `auth` exposes its authentication ui via Module Federation
+- `main` exposes the main application ui via Module Federation
 
 The host application dynamically imports remote bundles at runtime, allowing each app to be developed and deployed separately.
 
@@ -141,7 +141,7 @@ This enables independent deployment and development of each microfrontend while 
 
 - Add automated integration tests for microfrontend loading and routing.
 - Add CI/CD pipelines for independent app deployment.
-- Introduce a common shared UI library for consistent styling.
+- Introduce a common shared ui library for consistent styling.
 - Add build-time validation for remote endpoints and dependency compatibility.
 - Implement production-ready error boundaries around remote imports.
 

@@ -7,15 +7,15 @@
     "host-app",
     "main-app",
     "packages/shared",
-    "packages/UI"
+    "packages/ui"
   ],
   "scripts": {
     "bootstrap": "npm install",
-    "dev:all": "concurrently \"npm run dev:auth\" \"npm run dev:host\" \"npm run dev:main\"",
-    "build": "npm run build --workspaces",
+    "build": "npm run build --workspace packages/shared && npm run build --workspace packages/ui && concurrently \"npm --workspace auth-app run build\" \"npm --workspace main-app run build\" && npm --workspace host-app run build",
     "dev:auth": "npm --workspace auth-app run dev",
     "dev:host": "npm --workspace host-app run dev",
     "dev:main": "npm --workspace main-app run dev",
+    "dev:all": "concurrently \"npm run dev:auth\" \"npm run dev:main\" \"npm run dev:host\"",
     "preview:auth": "npm --workspace auth-app run preview",
     "preview:host": "npm --workspace host-app run preview",
     "preview:main": "npm --workspace main-app run preview"
@@ -23,15 +23,16 @@
   "dependencies": {
     "@module-federation/vite": "1.14.3",
     "@reduxjs/toolkit": "2.11.2",
+    "lucide-react": "^1.8.0",
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "react-router-dom": "7.14.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "5.0.0",
-    "@tailwindcss/postcss": "^4.2.2",
     "concurrently": "^8.2.0",
     "postcss": "8.5.6",
     "tailwindcss": "^4.2.2",
