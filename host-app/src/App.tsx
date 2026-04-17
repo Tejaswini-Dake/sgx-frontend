@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 import { sharedUtil } from '@sgx/shared';
 import './index.css';
 
@@ -30,12 +30,9 @@ export default function App() {
         <main className="p-6">
           <Suspense fallback={<div>Loading remote app…</div>}>
             <Routes>
+              <Route path="/*" element={<MainApp />} />
               <Route path="/auth" element={<AuthApp />} />
-              <Route path="/main" element={<MainApp />} />
-              <Route
-                path="*"
-                element={<div>Choose <strong>/auth</strong> or <strong>/main</strong>.</div>}
-              />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>
         </main>
