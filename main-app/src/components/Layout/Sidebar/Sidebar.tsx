@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@sgx/ui";
  
 import { SidebarProps } from "../types/layout.types";
 import {
@@ -42,9 +43,12 @@ export const Sidebar = ({
         </Link>
  
         {/* Collapse Button */}
-        <button
+        <Button
+          variant="white"
+          radius="full"
+          size="sm"
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-white border border-gray-300 rounded-full flex items-center justify-center shadow cursor-pointer"
+          className="absolute -right-3 top-1/2 -translate-y-1/2 !w-6 !h-6 !p-0 shadow"
           title={isCollapsed ? "Expand" : "Collapse"}
         >
           {isCollapsed ? (
@@ -52,7 +56,7 @@ export const Sidebar = ({
           ) : (
             <ChevronLeft className="w-4 h-4 text-gray-600" />
           )}
-        </button>
+        </Button>
       </div>
  
       {/* Menu Items */}

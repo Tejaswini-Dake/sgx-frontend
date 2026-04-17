@@ -1,5 +1,6 @@
 import React from "react";
 import { Bell, Settings, Search, X } from "lucide-react";
+import { Button } from "@sgx/ui";
  
 // Props Type
 interface HeaderComponentProps {
@@ -33,13 +34,15 @@ export const Header = ({
  
           {/* Clear Button */}
           {searchTerm && (
-            <button
+            <Button
+              variant="neutral"
+              size="sm"
               onClick={() => setSearchTerm("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 !p-0 text-gray-400 hover:text-gray-600"
               aria-label="Clear search"
             >
               <X className="w-4 h-4" />
-            </button>
+            </Button>
           )}
         </div>
       </div>
@@ -48,20 +51,26 @@ export const Header = ({
       <div className="flex items-center gap-4 ml-4">
         
         {/* Notification */}
-        <button
-          className="p-2 rounded-md hover:bg-gray-100 transition-colors"
+        <Button
+          variant="ghost"
+          size="sm"
+          radius="md"
+          className="!p-2"
           aria-label="Notifications"
         >
-          <Bell className="w-5 h-5 text-[#1a3a5c]" />
-        </button>
- 
+          <Bell className="w-5 h-5" />
+        </Button>
+
         {/* Settings */}
-        <button
-          className="p-2 rounded-md hover:bg-gray-100 transition-colors"
+        <Button
+          variant="ghost"
+          size="sm"
+          radius="md"
+          className="!p-2"
           aria-label="Settings"
         >
-          <Settings className="w-5 h-5 text-[#1a3a5c]" />
-        </button>
+          <Settings className="w-5 h-5" />
+        </Button>
  
         {/* User Avatar */}
         <div className="w-8 h-8 rounded-full bg-[#1a3a5c] text-white flex items-center justify-center text-sm font-semibold cursor-pointer hover:bg-[#0f2844] transition-colors">
