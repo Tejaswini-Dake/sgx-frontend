@@ -10,7 +10,7 @@ import {
   Globe,
   Calculator,
 } from 'lucide-react';
-import { MenuItem } from '../types/layout.types';
+import { MenuItem } from '@layout/types/layout.types';
 
 export const MENU_ITEMS: MenuItem[] = [
   {

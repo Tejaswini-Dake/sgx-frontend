@@ -14,7 +14,7 @@ export {
   getSidebarWidthClass,
 } from './utils/layout.helpers';
 
-export { MENU_ITEMS, SGX_WHITE_LOGO, SGX_COMPACT_LOGO, LAYOUT_CONFIG } from './config/navigation';
+export { MENU_ITEMS, LAYOUT_CONFIG } from './config/navigation';
 
 // Export Sub-Components
 export { SimpleTooltip } from './utils/SimpleTooltip';

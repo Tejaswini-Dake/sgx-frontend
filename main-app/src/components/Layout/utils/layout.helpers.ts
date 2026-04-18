@@ -1,8 +1,5 @@
-import { LAYOUT_CONFIG } from '../config/navigation';
+import { LAYOUT_CONFIG } from '@layout/config/navigation';
 
-/**
- * Check if a path is currently active
- */
 export const isPathActive = (path: string, currentPath: string): boolean => {
   if (path === '/') {
     return currentPath === '/' || currentPath.startsWith('/index/');

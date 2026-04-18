@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { NavLink } from 'react-router';
 import { ChevronLeft, ChevronRight, ChevronDown, LayoutGrid } from 'lucide-react';
 
-import { SidebarProps } from '../types/layout.types';
-import { getSidebarWidthClass } from '../utils/layout.helpers';
-import { MENU_ITEMS } from '../config/navigation';
-import { SimpleTooltip } from '../utils/SimpleTooltip';
+import { SidebarProps } from '@layout/types/layout.types';
+import { getSidebarWidthClass } from '@layout/utils/layout.helpers';
+import { MENU_ITEMS } from '@layout/config/navigation';
+import { SimpleTooltip } from '@layout/utils/SimpleTooltip';
 
-import sgxLogo from '../assets/sgxLogo.png';
-import sgxLogoCollapsed from '../assets/sgxLogoCollapsed.png';
+import sgxLogo from '@layout/assets/sgxLogo.png';
+import sgxLogoCollapsed from '@layout/assets/sgxLogoCollapsed.png';
 
-export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
+export function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
   const [openSections, setOpenSections] = useState<string[]>([
     '/backtest',
     '/parameters',

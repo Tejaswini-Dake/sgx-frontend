@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { federation } from '@module-federation/vite';
+import { resolve } from 'path';
 
 export default defineConfig({
   server: {
@@ -8,6 +9,12 @@ export default defineConfig({
     origin: 'http://localhost:3002',
   },
   base: '/',
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+      '@layout': resolve(__dirname, './src/components/Layout'),
+    },
+  },
   plugins: [
     react(),
     federation({
