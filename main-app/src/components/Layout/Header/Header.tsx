@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bell, Settings, Search, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@sgx/ui';
 
 // Props Type
@@ -9,6 +10,8 @@ interface HeaderComponentProps {
 }
 
 export const Header = ({ searchTerm, setSearchTerm }: HeaderComponentProps) => {
+  const navigate = useNavigate();
+
   return (
     <header className="bg-white border-b border-gray-200 px-4 lg:px-6 py-4 flex items-center justify-between shadow-md">
       {/* Search Section */}
@@ -50,7 +53,7 @@ export const Header = ({ searchTerm, setSearchTerm }: HeaderComponentProps) => {
         </Button>
 
         {/* Settings */}
-        <Button variant="ghost" size="sm" radius="md" className="p-2!" aria-label="Settings">
+        <Button variant="ghost" size="sm" radius="md" className="p-2!" aria-label="Settings" onClick={() => navigate('/ui-components')}>
           <Settings className="w-5 h-5" />
         </Button>
 
