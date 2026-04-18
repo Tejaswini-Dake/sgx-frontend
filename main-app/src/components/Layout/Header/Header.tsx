@@ -33,7 +33,7 @@ export const Header = ({ searchTerm, setSearchTerm }: HeaderComponentProps) => {
               variant="neutral"
               size="sm"
               onClick={() => setSearchTerm('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 !p-0 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-0! text-gray-400 hover:text-gray-600"
               aria-label="Clear search"
             >
               <X className="w-4 h-4" />
@@ -45,12 +45,12 @@ export const Header = ({ searchTerm, setSearchTerm }: HeaderComponentProps) => {
       {/* Right Side Icons */}
       <div className="flex items-center gap-4 ml-4">
         {/* Notification */}
-        <Button variant="ghost" size="sm" radius="md" className="!p-2" aria-label="Notifications">
+        <Button variant="ghost" size="sm" radius="md" className="p-2!" aria-label="Notifications">
           <Bell className="w-5 h-5" />
         </Button>
 
         {/* Settings */}
-        <Button variant="ghost" size="sm" radius="md" className="!p-2" aria-label="Settings">
+        <Button variant="ghost" size="sm" radius="md" className="p-2!" aria-label="Settings">
           <Settings className="w-5 h-5" />
         </Button>
 

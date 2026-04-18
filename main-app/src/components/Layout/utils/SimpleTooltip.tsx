@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { TooltipProps } from '../types/layout.types';
-import { getTooltipPlacementClasses } from '../utils/layout.helpers';
+import { TooltipProps } from '@layout/types/layout.types';
+import { getTooltipPlacementClasses } from '@layout/utils/layout.helpers';
 
 export const SimpleTooltip = ({ content, children, placement = 'right' }: TooltipProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
