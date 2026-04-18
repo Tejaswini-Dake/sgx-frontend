@@ -1,8 +1,6 @@
-import { Suspense, lazy } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Suspense, lazy, useState, useEffect } from 'react';
 import './index.css';
 
-// Lazy load remote apps
 const AuthApp = lazy(() =>
   import('auth/App').catch(() => ({
     default: () => <div>Auth failed to load</div>,
@@ -15,22 +13,28 @@ const MainApp = lazy(() =>
   }))
 );
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Suspense
-        fallback={
-          <div className="flex h-screen items-center justify-center text-slate-600">Loading...</div>
-        }
-      >
-        <Routes>
-          {/* Auth routes */}
-          <Route path="/auth/*" element={<AuthApp />} />
+function usePathname() {
+  const [pathname, setPathname] = useState(() => window.location.pathname);
 
-          {/* Main app routes */}
-          <Route path="/*" element={<MainApp />} />
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
+  useEffect(() => {
+    const handler = () => setPathname(window.location.pathname);
+    window.addEventListener('popstate', handler);
+    return () => window.removeEventListener('popstate', handler);
+  }, []);
+
+  return pathname;
+}
+
+export default function App() {
+  const pathname = usePathname();
+
+  return (
+    <Suspense
+      fallback={
+        <div className="flex h-screen items-center justify-center text-slate-600">Loading...</div>
+      }
+    >
+      {pathname.startsWith('/auth') ? <AuthApp /> : <MainApp />}
+    </Suspense>
   );
 }
