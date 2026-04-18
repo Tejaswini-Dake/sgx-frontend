@@ -1,4 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { VariantProps } from 'class-variance-authority';
+import { buttonVariants } from './button.variants';
 
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
@@ -18,11 +20,11 @@ export type ButtonVariant =
   | 'outline'
   | 'neutral';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant;
+export interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
   color?: ButtonVariant;
-  size?: ButtonSize;
-  radius?: ButtonRadius;
   fullWidth?: boolean;
   isLoading?: boolean;
   spinnerPlacement?: 'start' | 'end';
