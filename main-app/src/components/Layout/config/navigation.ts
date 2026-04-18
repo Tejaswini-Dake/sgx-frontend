@@ -1,31 +1,53 @@
-import { LayoutDashboard, BarChart3 } from 'lucide-react';
+import {
+  Edit,
+  Settings,
+  LayoutGrid,
+  Plus,
+  Filter,
+  TrendingUp,
+  Weight,
+  Database,
+  Globe,
+  Calculator,
+} from 'lucide-react';
 import { MenuItem } from '../types/layout.types';
- 
+
 export const MENU_ITEMS: MenuItem[] = [
   {
-    path: '/',
-    icon: LayoutDashboard,
-    label: 'SLA Dashboard',
-    subtitle: 'Monitor service agreements',
+    path: '/backtest',
+    icon: Edit,
+    label: 'Backtest',
+    count: 2,
+    subItems: [
+      { path: '/backtest/dashboard', label: 'Dashboard', icon: LayoutGrid },
+      { path: '/backtest/create-index', label: 'Create Index', icon: Plus },
+    ],
   },
   {
-    path: '/analytics',
-    icon: BarChart3,
-    label: 'Analytics Hub',
-    subtitle: 'Index Analytics',
+    path: '/parameters',
+    icon: Settings,
+    label: 'Parameters Configuration',
+    count: 5,
+    subItems: [
+      { path: '/parameters/universe', label: 'Universe Selection', icon: Database },
+      { path: '/parameters/filtering', label: 'Filtering', icon: Filter },
+      { path: '/parameters/configure-universe', label: 'Generate Universe', icon: Globe },
+      { path: '/parameters/ranking', label: 'Ranking', icon: TrendingUp },
+      { path: '/parameters/weighting', label: 'Weighting & Constraints', icon: Weight },
+    ],
+  },
+  {
+    path: '/settings',
+    icon: Settings,
+    label: 'Settings',
+    count: 1,
+    subItems: [{ path: '/settings/formula-builder', label: 'Formula Builder', icon: Calculator }],
   },
 ];
- 
-export const SGX_WHITE_LOGO =
-  'data:image/svg+xml;base64,PHN2Ym3aWR0aD0MTAwIDQwIGJoxwxsawxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0K...'; // Truncated for brevity
- 
-export const SGX_COMPACT_LOGO =
-  'data:image/svg+xml;base64,PHN2Ym3aWR0aD0MNDAgNDAgYmoxwxsawxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0K...'; // Truncated for brevity
- 
+
 export const LAYOUT_CONFIG = {
   SIDEBAR_WIDTH_EXPANDED: 'w-64',
   SIDEBAR_WIDTH_COLLAPSED: 'w-20',
   APP_NAME: 'Index Automation Studio',
   APP_VERSION: 'v2.1.0',
 };
- 
