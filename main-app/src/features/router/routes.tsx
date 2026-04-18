@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 import { Navigate, RouteObject } from 'react-router-dom';
-import { BacktestDashboard } from '../backtest';
 
+const BacktestDashboard = lazy(() => import('@/features/backtest/pages/BacktestDashboard'));
 const Layout = lazy(() => import('@layout/Layout'));
 
 export const routes: RouteObject[] = [

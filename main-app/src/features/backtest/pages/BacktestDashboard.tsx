@@ -1,6 +1,6 @@
-import { BacktestComponent } from '../components/BacktestComponent';
+import { BacktestComponent } from '@/features/backtest/components/BacktestComponent';
 
-export function BacktestDashboard() {
+export default function BacktestDashboard() {
   return (
     <div>
       <h1>Backtest Dashboard</h1>
