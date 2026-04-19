@@ -9,7 +9,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@theme': resolve(__dirname, '../packages/ui/src/theme.css'),
+      '@theme': resolve(__dirname, '../packages/ui/src/styles/theme.css'),
     },
   },
   plugins: [
