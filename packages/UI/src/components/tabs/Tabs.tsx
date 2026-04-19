@@ -3,7 +3,6 @@ import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { cn } from '../../utils';
 import { tabsVariants, tabsListVariants, tabsTriggerVariants, tabsContentVariants } from './tabs.variants';
 import type { TabsProps, TabsListProps, TabsTriggerProps, TabsContentProps } from './Tabs.types';
-import '../../../../../theme.css';
 
 function Tabs({ className, gap, ...props }: TabsProps) {
   return (

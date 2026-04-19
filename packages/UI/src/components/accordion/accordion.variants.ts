@@ -19,9 +19,8 @@ export const accordionTriggerVariants = cva(
     variants: {
       variant: {
         default: 'py-4 text-sm hover:underline',
-        bordered: 'py-3 text-sm hover:text-[var(--sgx-blue)]',
-        ghost:
-          'py-3 px-3 text-sm rounded-md hover:bg-[var(--sgx-bg-blue)] hover:text-[var(--sgx-blue)]',
+        bordered: 'py-3 text-sm hover:text-sgx-blue',
+        ghost: 'py-3 px-3 text-sm rounded-md hover:bg-sgx-bg-blue hover:text-sgx-blue',
       },
       size: {
         sm: 'text-xs py-2',
@@ -33,7 +32,7 @@ export const accordionTriggerVariants = cva(
       variant: 'default',
       size: 'md',
     },
-  },
+  }
 );
 
 export const accordionContentVariants = cva(
@@ -49,5 +48,5 @@ export const accordionContentVariants = cva(
     defaultVariants: {
       size: 'md',
     },
-  },
+  }
 );

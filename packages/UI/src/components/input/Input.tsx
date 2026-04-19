@@ -2,7 +2,6 @@ import * as React from 'react';
 import { cn } from '../../utils';
 import { inputVariants } from './input.variants';
 import type { InputProps } from './Input.types';
-import '../../../../../theme.css';
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, variant, size, ...props }, ref) => {

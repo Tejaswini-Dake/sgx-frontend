@@ -8,8 +8,8 @@ export const selectTriggerVariants = cva(
     'flex w-full items-center justify-between gap-2 rounded-md border bg-input-background ' +
     'px-3 py-2 text-sm whitespace-nowrap transition-[color,box-shadow] outline-none ' +
     'focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 ' +
-    "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex " +
-    "*:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 " +
+    '*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex ' +
+    '*:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 ' +
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
@@ -21,14 +21,14 @@ export const selectTriggerVariants = cva(
       variant: {
         default: 'bg-input-background',
         ghost: 'border-transparent bg-transparent focus-visible:bg-input-background',
-        outlined: 'bg-transparent border-[var(--sgx-blue)] focus-visible:ring-[var(--sgx-blue)]',
+        outlined: 'bg-transparent border-sgx-blue focus-visible:ring-sgx-blue',
       },
     },
     defaultVariants: {
       size: 'default',
       variant: 'default',
     },
-  },
+  }
 );
 
 export const selectContentVariants = cva(
@@ -43,7 +43,7 @@ export const selectContentVariants = cva(
   {
     variants: {},
     defaultVariants: {},
-  },
+  }
 );
 
 export const selectItemVariants = cva(
@@ -54,5 +54,5 @@ export const selectItemVariants = cva(
   {
     variants: {},
     defaultVariants: {},
-  },
+  }
 );

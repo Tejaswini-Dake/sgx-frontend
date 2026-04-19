@@ -3,7 +3,6 @@ import { Slot } from '@radix-ui/react-slot';
 import { cn } from '../../utils';
 import { buttonVariants } from './button.variants';
 import { ButtonProps } from './Button.types';
-import '../../../../../theme.css';
 
 const spinner = (
   <svg
@@ -38,7 +37,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       ...props
     },
-    ref,
+    ref
   ) => {
     const Comp = asChild ? Slot : 'button';
     const activeVariant = variant ?? color ?? 'primary';
@@ -53,7 +52,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({ variant: activeVariant, size, radius }),
           fullWidth && 'w-full',
           isLoading && 'opacity-80 cursor-wait',
-          className,
+          className
         )}
         disabled={computedDisabled}
         aria-busy={isLoading || undefined}
@@ -66,7 +65,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {!isLoading && endContent}
       </Comp>
     );
-  },
+  }
 );
 
 Button.displayName = 'Button';

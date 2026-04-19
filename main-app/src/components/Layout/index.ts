@@ -18,5 +18,5 @@ export { MENU_ITEMS, LAYOUT_CONFIG } from './config/navigation';
 
 // Export Sub-Components
 export { SimpleTooltip } from './utils/SimpleTooltip';
-export { Sidebar } from './Sidebar/Sidebar';
-export { Header } from './Header/Header';
+export { Sidebar } from './sidebar/Sidebar';
+export { Header } from './header/Header';

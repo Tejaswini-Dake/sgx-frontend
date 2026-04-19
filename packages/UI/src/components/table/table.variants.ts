@@ -18,7 +18,7 @@ export const tableRowVariants = cva('border-b transition-colors', {
     variant: {
       default: 'hover:bg-muted/50 data-[state=selected]:bg-muted',
       striped: 'odd:bg-muted/20 hover:bg-muted/50 data-[state=selected]:bg-muted',
-      highlighted: 'hover:bg-[var(--sgx-bg-blue)] data-[state=selected]:bg-[var(--sgx-bg-blue)]',
+      highlighted: 'hover:bg-sgx-bg-blue data-[state=selected]:bg-sgx-bg-blue',
     },
   },
   defaultVariants: {
@@ -33,14 +33,14 @@ export const tableHeadVariants = cva(
     variants: {
       variant: {
         default: 'text-foreground',
-        primary: 'text-[var(--sgx-blue)]',
+        primary: 'text-sgx-blue',
         muted: 'text-muted-foreground',
       },
     },
     defaultVariants: {
       variant: 'default',
     },
-  },
+  }
 );
 
 export const tableCellVariants = cva(
@@ -57,5 +57,5 @@ export const tableCellVariants = cva(
     defaultVariants: {
       size: 'md',
     },
-  },
+  }
 );

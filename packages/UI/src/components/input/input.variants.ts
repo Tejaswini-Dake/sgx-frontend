@@ -18,12 +18,12 @@ export const inputVariants = cva(
       variant: {
         default: 'bg-input-background',
         ghost: 'border-transparent bg-transparent focus-visible:bg-input-background',
-        outlined: 'bg-transparent border-[var(--sgx-blue)] focus-visible:ring-[var(--sgx-blue)]',
+        outlined: 'bg-transparent border-sgx-blue focus-visible:ring-sgx-blue',
       },
     },
     defaultVariants: {
       size: 'md',
       variant: 'default',
     },
-  },
+  }
 );

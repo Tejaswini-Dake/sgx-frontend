@@ -1,3 +1,5 @@
+import './theme.css';
+
 export { default as Button, buttonVariants } from './components/button/Button';
 export {
   default as Accordion,
@@ -38,12 +40,7 @@ export {
   TableCell,
   TableCaption,
 } from './components/table/Table';
-export {
-  default as Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-} from './components/tabs/Tabs';
+export { default as Tabs, TabsList, TabsTrigger, TabsContent } from './components/tabs/Tabs';
 export { default as Textarea, textareaVariants } from './components/textarea/Textarea';
 export { default as Alert, AlertTitle, AlertDescription } from './components/alert/Alert';
 export {

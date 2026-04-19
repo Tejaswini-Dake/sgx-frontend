@@ -3,7 +3,6 @@ import * as LabelPrimitive from '@radix-ui/react-label';
 import { cn } from '../../utils';
 import { labelVariants } from './label.variants';
 import type { LabelProps } from './Label.types';
-import '../../../../../theme.css';
 
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
