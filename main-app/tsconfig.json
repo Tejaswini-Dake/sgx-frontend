@@ -19,7 +19,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@layout/*": ["src/components/layout/*"],
+      "@layout/*": ["src/components/Layout/*"],
       "@theme": ["../packages/ui/src/styles/theme.css"]
     }
   },
