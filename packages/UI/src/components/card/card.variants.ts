@@ -1,27 +1,24 @@
 import { cva } from 'class-variance-authority';
 
-export const cardVariants = cva(
-  'bg-card text-card-foreground flex flex-col gap-6 transition-all',
-  {
-    variants: {
-      variant: {
-        default: 'rounded-xl border',
-        elevated: 'rounded-xl shadow-md border-0',
-        outlined: 'rounded-xl border-2 border-[var(--sgx-blue)]',
-        ghost: 'rounded-xl border-0 bg-transparent',
-      },
-      size: {
-        sm: 'gap-3',
-        md: 'gap-6',
-        lg: 'gap-8',
-      },
+export const cardVariants = cva('bg-card text-card-foreground flex flex-col gap-6 transition-all', {
+  variants: {
+    variant: {
+      default: 'rounded-xl border',
+      elevated: 'rounded-xl shadow-md border-0',
+      outlined: 'rounded-xl border-2 border-sgx-blue',
+      ghost: 'rounded-xl border-0 bg-transparent',
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'md',
+    size: {
+      sm: 'gap-3',
+      md: 'gap-6',
+      lg: 'gap-8',
     },
   },
-);
+  defaultVariants: {
+    variant: 'default',
+    size: 'md',
+  },
+});
 
 export const cardHeaderVariants = cva(
   '@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6',
@@ -36,7 +33,7 @@ export const cardHeaderVariants = cva(
     defaultVariants: {
       size: 'md',
     },
-  },
+  }
 );
 
 export const cardContentVariants = cva('[&:last-child]:pb-6', {

@@ -12,7 +12,7 @@ export const textareaVariants = cva(
       variant: {
         default: 'bg-input-background resize-none',
         ghost: 'border-transparent bg-transparent focus-visible:bg-input-background resize-none',
-        outlined: 'bg-transparent border-[var(--sgx-blue)] focus-visible:ring-[var(--sgx-blue)] resize-none',
+        outlined: 'bg-transparent border-sgx-blue focus-visible:ring-sgx-blue resize-none',
         resizable: 'bg-input-background resize-y',
       },
       size: {
@@ -25,5 +25,5 @@ export const textareaVariants = cva(
       variant: 'default',
       size: 'md',
     },
-  },
+  }
 );

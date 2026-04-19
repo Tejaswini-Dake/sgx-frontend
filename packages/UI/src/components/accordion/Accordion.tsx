@@ -8,7 +8,6 @@ import {
   accordionContentVariants,
 } from './accordion.variants';
 import type { AccordionItemProps, AccordionTriggerProps, AccordionContentProps } from './Accordion.types';
-import '../../../../../theme.css';
 
 function Accordion({ ...props }: React.ComponentProps<typeof AccordionPrimitive.Root>) {
   return <AccordionPrimitive.Root data-slot="accordion" {...props} />;

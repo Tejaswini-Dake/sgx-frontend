@@ -2,7 +2,6 @@ import * as React from 'react';
 import { cn } from '../../utils';
 import { alertVariants } from './alert.variants';
 import type { AlertProps } from './Alert.types';
-import '../../../../../theme.css';
 
 function Alert({ className, variant, ...props }: AlertProps) {
   return (

@@ -14,7 +14,7 @@ export const labelVariants = cva(
       variant: {
         default: 'text-foreground',
         muted: 'text-muted-foreground',
-        primary: 'text-[var(--sgx-blue)]',
+        primary: 'text-sgx-blue',
         destructive: 'text-destructive',
       },
     },
@@ -22,5 +22,5 @@ export const labelVariants = cva(
       size: 'md',
       variant: 'default',
     },
-  },
+  }
 );

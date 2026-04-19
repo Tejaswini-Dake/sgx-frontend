@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { LayoutProps } from '@layout/types/layout.types';
 import { useLayout } from '@layout/hooks/useLayout';
-import { Sidebar } from '@layout/Sidebar/Sidebar';
-import { Header } from '@layout/Header/Header';
+import { Sidebar } from '@/components/layout/sidebar/Sidebar';
+import { Header } from '@/components/layout/header/Header';
 
 /**
  * Main Layout Component

@@ -3,7 +3,6 @@ import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from 'lucide-re
 import { cn } from '../../utils';
 import { paginationLinkVariants } from './pagination.variants';
 import type { PaginationLinkProps } from './Pagination.types';
-import '../../../../../theme.css';
 
 function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
   return (

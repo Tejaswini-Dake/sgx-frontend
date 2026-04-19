@@ -11,16 +11,13 @@ export const alertVariants = cva(
         default: 'bg-card text-card-foreground',
         destructive:
           'text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90',
-        success:
-          'text-[var(--sgx-green)] bg-card border-[var(--sgx-green)]/30 [&>svg]:text-current',
-        warning:
-          'text-[var(--sgx-yellow)] bg-card border-[var(--sgx-yellow)]/40 [&>svg]:text-current',
-        info:
-          'text-[var(--sgx-light-blue)] bg-card border-[var(--sgx-light-blue)]/30 [&>svg]:text-current',
+        success: 'text-sgx-green bg-card border-sgx-green/30 [&>svg]:text-current',
+        warning: 'text-sgx-yellow bg-card border-sgx-yellow/40 [&>svg]:text-current',
+        info: 'text-sgx-light-blue bg-card border-sgx-light-blue/30 [&>svg]:text-current',
       },
     },
     defaultVariants: {
       variant: 'default',
     },
-  },
+  }
 );

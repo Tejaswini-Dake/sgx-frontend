@@ -2,9 +2,12 @@ import * as React from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { cn } from '../../utils';
-import { selectTriggerVariants, selectContentVariants, selectItemVariants } from './select.variants';
+import {
+  selectTriggerVariants,
+  selectContentVariants,
+  selectItemVariants,
+} from './select.variants';
 import type { SelectTriggerProps, SelectContentProps, SelectItemProps } from './Select.types';
-import '../../../../../theme.css';
 
 function Select({ ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {
   return <SelectPrimitive.Root data-slot="select" {...props} />;
@@ -33,12 +36,7 @@ function SelectTrigger({ className, size, variant, children, ...props }: SelectT
   );
 }
 
-function SelectContent({
-  className,
-  children,
-  position = 'popper',
-  ...props
-}: SelectContentProps) {
+function SelectContent({ className, children, position = 'popper', ...props }: SelectContentProps) {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -47,7 +45,7 @@ function SelectContent({
           selectContentVariants({}),
           position === 'popper' &&
             'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
-          className,
+          className
         )}
         position={position}
         {...props}
@@ -57,7 +55,7 @@ function SelectContent({
           className={cn(
             'p-1',
             position === 'popper' &&
-              'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)] scroll-my-1',
+              'h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width) scroll-my-1'
           )}
         >
           {children}
@@ -68,10 +66,7 @@ function SelectContent({
   );
 }
 
-function SelectLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof SelectPrimitive.Label>) {
+function SelectLabel({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Label>) {
   return (
     <SelectPrimitive.Label
       data-slot="select-label"

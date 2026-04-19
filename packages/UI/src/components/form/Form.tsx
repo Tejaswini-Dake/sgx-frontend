@@ -19,7 +19,6 @@ import type {
   FormItemContextValue,
 } from './Form.types';
 import { Label } from '../label/Label';
-import '../../../../../theme.css';
 
 const Form = FormProvider;
 

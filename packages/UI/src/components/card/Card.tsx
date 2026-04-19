@@ -7,7 +7,6 @@ import {
   cardFooterVariants,
 } from './card.variants';
 import type { CardProps, CardHeaderProps, CardContentProps, CardFooterProps } from './Card.types';
-import '../../../../../theme.css';
 
 function Card({ className, variant, size, ...props }: CardProps) {
   return (

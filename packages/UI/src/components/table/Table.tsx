@@ -2,7 +2,6 @@ import * as React from 'react';
 import { cn } from '../../utils';
 import { tableVariants, tableRowVariants, tableHeadVariants, tableCellVariants } from './table.variants';
 import type { TableProps, TableRowProps, TableHeadProps, TableCellProps } from './Table.types';
-import '../../../../../theme.css';
 
 function Table({ className, size, ...props }: TableProps) {
   return (

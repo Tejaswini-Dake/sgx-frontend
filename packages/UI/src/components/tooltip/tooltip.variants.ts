@@ -10,7 +10,7 @@ export const tooltipContentVariants = cva(
     variants: {
       variant: {
         default: 'bg-primary text-primary-foreground',
-        dark: 'bg-[var(--sgx-blue)] text-white',
+        dark: 'bg-sgx-blue text-white',
         light: 'bg-white text-foreground border border-border shadow-md',
         destructive: 'bg-destructive text-white',
       },
@@ -24,5 +24,5 @@ export const tooltipContentVariants = cva(
       variant: 'default',
       size: 'md',
     },
-  },
+  }
 );

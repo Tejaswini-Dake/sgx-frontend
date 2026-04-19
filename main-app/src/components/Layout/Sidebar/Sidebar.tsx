@@ -38,11 +38,6 @@ export function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
           </div>
         )}
         {isCollapsed && <img src={sgxLogoCollapsed} alt="SGX Group" className="h-8 mx-auto" />}
-        {!isCollapsed && (
-          <button className="p-2 hover:bg-[#0d1b3a] rounded-lg transition-colors">
-            <LayoutGrid size={20} style={{ color: '#0094B3' }} />
-          </button>
-        )}
       </div>
 
       {/* Navigation */}

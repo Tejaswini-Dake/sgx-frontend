@@ -1,10 +1,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { federation } from '@module-federation/vite';
+import { resolve } from 'path';
 
 export default defineConfig({
   server: {
     port: 3000,
+  },
+  resolve: {
+    alias: {
+      '@theme': resolve(__dirname, '../packages/ui/src/theme.css'),
+    },
   },
   plugins: [
     react(),

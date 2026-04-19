@@ -21,13 +21,12 @@ export const calendarDayVariants = cva(
     variants: {
       variant: {
         default: '',
-        primary:
-          'aria-selected:bg-[var(--sgx-blue)] aria-selected:text-white hover:bg-[var(--sgx-blue)]/10',
+        primary: 'aria-selected:bg-sgx-blue aria-selected:text-white hover:bg-sgx-blue/10',
         ghost: 'hover:bg-transparent hover:underline',
       },
     },
     defaultVariants: {
       variant: 'default',
     },
-  },
+  }
 );

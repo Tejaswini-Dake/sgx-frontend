@@ -13,24 +13,18 @@ export const tabsVariants = cva('flex flex-col', {
   },
 });
 
-export const tabsListVariants = cva(
-  'inline-flex w-fit items-center justify-center',
-  {
-    variants: {
-      variant: {
-        default:
-          'bg-muted text-muted-foreground h-9 rounded-xl p-[3px]',
-        underline:
-          'border-b border-border rounded-none p-0 bg-transparent h-auto gap-0',
-        pills:
-          'bg-transparent gap-1 p-0 h-auto',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
+export const tabsListVariants = cva('inline-flex w-fit items-center justify-center', {
+  variants: {
+    variant: {
+      default: 'bg-muted text-muted-foreground h-9 rounded-xl p-[3px]',
+      underline: 'border-b border-border rounded-none p-0 bg-transparent h-auto gap-0',
+      pills: 'bg-transparent gap-1 p-0 h-auto',
     },
   },
-);
+  defaultVariants: {
+    variant: 'default',
+  },
+});
 
 export const tabsTriggerVariants = cva(
   'inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-sm font-medium ' +
@@ -44,18 +38,18 @@ export const tabsTriggerVariants = cva(
           'data-[state=active]:bg-card data-[state=active]:text-foreground ' +
           'text-foreground h-[calc(100%-1px)] flex-1 rounded-xl border border-transparent px-2 py-1',
         underline:
-          'data-[state=active]:border-b-2 data-[state=active]:border-[var(--sgx-blue)] ' +
-          'data-[state=active]:text-[var(--sgx-blue)] text-muted-foreground ' +
+          'data-[state=active]:border-b-2 data-[state=active]:border-sgx-blue ' +
+          'data-[state=active]:text-sgx-blue text-muted-foreground ' +
           'rounded-none border-b-2 border-transparent px-4 py-2',
         pills:
-          'data-[state=active]:bg-[var(--sgx-blue)] data-[state=active]:text-white ' +
+          'data-[state=active]:bg-sgx-blue data-[state=active]:text-white ' +
           'text-foreground rounded-lg px-4 py-1.5 hover:bg-muted',
       },
     },
     defaultVariants: {
       variant: 'default',
     },
-  },
+  }
 );
 
 export const tabsContentVariants = cva('flex-1 outline-none', {

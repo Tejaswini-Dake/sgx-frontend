@@ -4,23 +4,22 @@ export const buttonVariants = cva(
   'inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all ' +
     'disabled:pointer-events-none disabled:opacity-50 ' +
     '[&_svg]:pointer-events-none [&_svg:not([class*="size-"])]:size-4 shrink-0 [&_svg]:shrink-0 ' +
-    'outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--sgx-blue)] ' +
+    'outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sgx-blue ' +
     'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
   {
     variants: {
       variant: {
-        primary: 'bg-[var(--sgx-blue)] hover:bg-[#061544] text-white',
+        primary: 'bg-sgx-blue hover:bg-[#061544] text-white',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         danger: 'bg-destructive text-white hover:bg-destructive/90',
-        success: 'bg-[var(--sgx-green)] hover:bg-[#05bf2a] text-[var(--sgx-blue)]',
-        warning: 'bg-[#FFCC00] hover:bg-[#e6b800] text-[var(--sgx-blue)]',
-        lightblue: 'bg-[var(--sgx-light-blue)] hover:bg-[#006b88] text-white',
-        ghost:
-          'bg-transparent border border-[var(--sgx-blue)] text-[var(--sgx-blue)] hover:bg-[var(--sgx-light-gray)]',
-        white: 'bg-white text-[var(--sgx-dark-gray)] hover:bg-gray-100 border border-gray-200',
+        success: 'bg-sgx-green hover:bg-[#05bf2a] text-white',
+        warning: 'bg-sgx-yellow hover:bg-[#e6b800] text-white',
+        lightblue: 'bg-sgx-light-blue hover:bg-[#006b88] text-white',
+        ghost: 'bg-transparent border border-sgx-blue text-sgx-blue hover:bg-sgx-light-gray',
+        white: 'bg-white text-sgx-dark-gray hover:bg-gray-100 border border-gray-200',
         outline:
-          'bg-transparent border border-[rgba(95,96,98,0.15)] text-[var(--sgx-dark-gray)] ' +
-          'hover:border-[var(--sgx-light-blue)] hover:text-[var(--sgx-light-blue)]',
+          'bg-transparent border border-sgx-light-blue text-sgx-light-blue ' +
+          'hover:bg-sgx-light-blue/10',
         neutral: '',
       },
       size: {
@@ -40,5 +39,5 @@ export const buttonVariants = cva(
       size: 'md',
       radius: 'lg',
     },
-  },
+  }
 );

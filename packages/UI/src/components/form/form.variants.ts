@@ -17,7 +17,7 @@ export const formMessageVariants = cva('text-sm', {
   variants: {
     variant: {
       error: 'text-destructive',
-      success: 'text-[var(--sgx-green)]',
+      success: 'text-sgx-green',
       muted: 'text-muted-foreground',
     },
   },
