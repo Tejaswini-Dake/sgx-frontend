@@ -13,7 +13,7 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, './src'),
       '@layout': resolve(__dirname, './src/components/layout'),
-      '@theme': resolve(__dirname, '../packages/ui/src/theme.css'),
+      '@theme': resolve(__dirname, '../packages/ui/src/styles/theme.css'),
     },
   },
   plugins: [

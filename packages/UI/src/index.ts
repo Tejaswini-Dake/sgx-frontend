@@ -1,4 +1,4 @@
-import './theme.css';
+import './styles/index.css';
 
 export { default as Button, buttonVariants } from './components/button/Button';
 export {

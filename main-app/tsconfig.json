@@ -20,7 +20,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@layout/*": ["src/components/layout/*"],
-      "@theme": ["../packages/ui/src/theme.css"]
+      "@theme": ["../packages/ui/src/styles/theme.css"]
     }
   },
   "include": ["src"]
