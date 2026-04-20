@@ -1,16 +1,15 @@
 import React, { lazy } from 'react';
 import { Navigate, RouteObject } from 'react-router-dom';
 
-const BacktestDashboard = lazy(() => import('@/features/backtest/pages/BacktestDashboard'));
-const UniverseSelectionPage = lazy(() => import('@/features/backtest/pages/UniverseSelectionPage'));
-const FilteringPage = lazy(() => import('@/features/backtest/pages/FilteringPage'));
-const CreateFilterSetPage = lazy(() => import('@/features/backtest/pages/CreateFilterSetPage'));
-const GenerateUniversePage = lazy(() => import('@/features/backtest/pages/GenerateUniversePage'));
+const UniverseSelectionPage = lazy(() => import('@/features/parameters-configuration/pages/UniverseSelectionPage'));
+const FilteringPage = lazy(() => import('@/features/parameters-configuration/pages/FilteringPage'));
+const CreateFilterSetPage = lazy(() => import('@/features/parameters-configuration/pages/CreateFilterSetPage'));
+const GenerateUniversePage = lazy(() => import('@/features/parameters-configuration/pages/GenerateUniversePage'));
 const CreateUniverseConfigurationPage = lazy(
-  () => import('@/features/backtest/pages/CreateUniverseConfigurationPage')
+  () => import('@/features/parameters-configuration/pages/CreateUniverseConfigurationPage')
 );
-const UniverseHistoryPage = lazy(() => import('@/features/backtest/pages/UniverseHistoryPage'));
-const FilterSetDetailPage = lazy(() => import('@/features/backtest/pages/FilterSetDetailPage'));
+const UniverseHistoryPage = lazy(() => import('@/features/parameters-configuration/pages/UniverseHistoryPage'));
+const FilterSetDetailPage = lazy(() => import('@/features/parameters-configuration/pages/FilterSetDetailPage'));
 const PackagesUiPage = lazy(() => import('@/components/PackagesUiPage/PackagesUiPage'));
 const Layout = lazy(() => import('@layout/Layout'));
 
@@ -21,11 +20,7 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Navigate to="/backtest/dashboard" replace />,
-      },
-      {
-        path: 'backtest/dashboard',
-        element: <BacktestDashboard />,
+        element: <Navigate to="/parameters/universe" replace />,
       },
       {
         path: 'parameters/universe',

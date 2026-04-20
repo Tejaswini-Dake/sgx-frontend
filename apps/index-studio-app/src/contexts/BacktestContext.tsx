@@ -11,7 +11,7 @@ import {
   GeneratedFile,
   FormulaField,
   BacktestConfiguration,
-} from '@/features/backtest/types';
+} from '@/features/parameters-configuration/types';
 import {
   initialUniverses,
   initialFilterSets,
@@ -19,7 +19,7 @@ import {
   initialRankingRules,
   initialWeightingConfigurations,
   initialFormulaFields,
-} from '@/features/backtest/data';
+} from '@/features/parameters-configuration/data';
 
 export type {
   Universe,

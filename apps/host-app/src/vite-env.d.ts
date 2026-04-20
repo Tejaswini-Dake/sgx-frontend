@@ -6,7 +6,7 @@ declare module 'auth/App' {
   export default App;
 }
 
-declare module 'main/App' {
+declare module 'index-studio/App' {
   import type { ComponentType } from 'react';
   const App: ComponentType;
   export default App;

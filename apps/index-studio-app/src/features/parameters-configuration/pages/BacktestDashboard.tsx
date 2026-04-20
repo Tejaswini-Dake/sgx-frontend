@@ -1,4 +1,4 @@
-import { BacktestComponent } from '@/features/backtest/components/BacktestComponent';
+import { BacktestComponent } from '@/features/parameters-configuration/components/BacktestComponent';
 import { Button } from '@sgx/ui';
 
 export default function BacktestDashboard() {

@@ -8,7 +8,7 @@ const AuthApp = lazy(() =>
 );
 
 const MainApp = lazy(() =>
-  import('main/App').catch(() => ({
+  import('index-studio/App').catch(() => ({
     default: () => <div>Main failed to load</div>,
   }))
 );

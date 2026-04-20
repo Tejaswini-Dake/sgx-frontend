@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useBacktest } from '@/contexts/BacktestContext';
 import { CustomDropdown } from '@/components/CustomDropdown';
-import { CreateUniverseModal } from '@/features/backtest/components/CreateUniverseModal';
+import { CreateUniverseModal } from '@/features/parameters-configuration/components/CreateUniverseModal';
 import { Plus, Edit2, Eye, MoreVertical, Search, Trash2 } from 'lucide-react';
 
 export default function UniverseSelectionPage() {

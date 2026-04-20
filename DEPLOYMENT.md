@@ -25,10 +25,10 @@ Browser
   └── nginx (port 80)
         ├── /           → host-app  (shell / layout)
         ├── /auth/      → auth-app  (login / sso)
-        └── /main/      → main-app  (dashboard, backtest, universe etc.)
+        └── /index-studio/      → index-studio  (dashboard, parameters-configuration, universe etc.)
 ```
 
-At runtime the host-app shell loads auth-app and main-app as federated remotes via their `remoteEntry.js` files. All three are served from the same nginx container — no cross-origin calls between microfrontends.
+At runtime the host-app shell loads auth-app and index-studio as federated remotes via their `remoteEntry.js` files. All three are served from the same nginx container — no cross-origin calls between microfrontends.
 
 **Tech stack:** React 19 · Vite 7 · Module Federation · React Router v7 · Redux Toolkit · Tailwind CSS · nginx 1.25 · Node 20 (build only)
 
@@ -44,7 +44,7 @@ sgx-frontend/
 │   │   ├── .env.dev
 │   │   ├── .env.uat
 │   │   └── .env.prod
-│   ├── main-app/              # Main microfrontend
+│   ├── index-studio-app/              # Main microfrontend
 │   │   ├── .env
 │   │   ├── .env.dev
 │   │   ├── .env.uat
@@ -98,7 +98,7 @@ Vite loads env files at **build time only** — values are baked into the static
 
 ### 3.2 env variables per app
 
-**auth-app** and **main-app** (per environment):
+**auth-app** and **index-studio-app** (per environment):
 
 | Variable | Description | Example |
 |----------|-------------|---------|
@@ -111,9 +111,9 @@ Vite loads env files at **build time only** — values are baked into the static
 |----------|-------------|---------|
 | `VITE_APP_ENV` | Environment label | `dev` |
 | `VITE_AUTH_APP_URL` | auth-app remoteEntry URL | `https://dev-sgx.example.com/auth/remoteEntry.js` |
-| `VITE_MAIN_APP_URL` | main-app remoteEntry URL | `https://dev-sgx.example.com/main/remoteEntry.js` |
+| `VITE_INDEX_STUDIO_APP_URL` | index-studio-app remoteEntry URL | `https://dev-sgx.example.com/index-studio/remoteEntry.js` |
 
-> **Important:** For Docker/ECS deployments, `apps/host-app/.env.<env>` uses relative paths (`/auth/remoteEntry.js`, `/main/remoteEntry.js`) because all microfrontends are served from the same nginx container/domain.
+> **Important:** For Docker/ECS deployments, `apps/host-app/.env.<env>` uses relative paths (`/auth/remoteEntry.js`, `/index-studio/remoteEntry.js`) because all microfrontends are served from the same nginx container/domain.
 
 ### 3.3 Before deploying — update API URLs
 
@@ -124,9 +124,9 @@ apps/auth-app/.env.dev       → VITE_API_BASE_URL
 apps/auth-app/.env.uat       → VITE_API_BASE_URL
 apps/auth-app/.env.prod      → VITE_API_BASE_URL
 
-apps/main-app/.env.dev       → VITE_API_BASE_URL
-apps/main-app/.env.uat       → VITE_API_BASE_URL
-apps/main-app/.env.prod      → VITE_API_BASE_URL
+apps/index-studio-app/.env.dev       → VITE_API_BASE_URL
+apps/index-studio-app/.env.uat       → VITE_API_BASE_URL
+apps/index-studio-app/.env.prod      → VITE_API_BASE_URL
 ```
 
 Federation URLs in `apps/host-app/.env.*` should remain as relative paths (`/auth/remoteEntry.js`) for container deployments — do not change these.
@@ -145,7 +145,7 @@ Federation URLs in `apps/host-app/.env.*` should remain as relative paths (`/aut
 | `npm run start:uat` | Build with uat env + preview locally |
 | `npm run start:prod` | Build with prod env + preview locally |
 
-Local preview ports: host `4000` · auth `4001` · main `4002`
+Local preview ports: host `4000` · auth `4001` · index-studio `4002`
 
 ### 4.2 Build modes
 
@@ -175,7 +175,7 @@ Build output layout inside the nginx container:
 ```
 /usr/share/nginx/html/          ← host-app dist
 /usr/share/nginx/html/auth/     ← auth-app dist
-/usr/share/nginx/html/main/     ← main-app dist
+/usr/share/nginx/html/index-studio/     ← index-studio-app dist
 ```
 
 ### 5.2 Build the image
@@ -362,7 +362,7 @@ The nginx config routes requests to the correct app based on URL path:
 |------|--------|---------------|
 | `/health` | Health check response | — |
 | `/auth/*` | auth-app static files | `/auth/index.html` (SPA) |
-| `/main/*` | main-app static files | `/main/index.html` (SPA) |
+| `/index-studio/*` | index-studio-app static files | `/index-studio/index.html` (SPA) |
 | `/*` | host-app static files | `/index.html` (SPA) |
 
 **Caching headers:**
@@ -393,7 +393,7 @@ Used by:
 
 ### remoteEntry.js 404
 - The host-app is trying to load a microfrontend remote that wasn't built or is at the wrong path
-- For container deployments, `apps/host-app/.env.<env>` must use relative paths: `/auth/remoteEntry.js` and `/main/remoteEntry.js`
+- For container deployments, `apps/host-app/.env.<env>` must use relative paths: `/auth/remoteEntry.js` and `/index-studio/remoteEntry.js`
 
 ### ECR push: unauthorized
 - Re-run: `aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account>.dkr.ecr.<region>.amazonaws.com`

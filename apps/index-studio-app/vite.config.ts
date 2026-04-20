@@ -8,7 +8,7 @@ export default defineConfig(({ mode, command }) => {
   // 'vite build' with no --mode flag → mode='production' → start:local
   // 'vite build --mode dev-preview' → start:dev/uat/prod
   const isPreviewBuild = command === 'build' && (mode === 'production' || mode.endsWith('-preview'));
-  const base = isLocalDev ? '/' : isPreviewBuild ? 'http://localhost:4002/main/' : '/main/';
+  const base = isLocalDev ? '/' : isPreviewBuild ? 'http://localhost:4002/index-studio/' : '/index-studio/';
 
   // For '-preview' modes (e.g. 'dev-preview'), Vite won't load '.env.dev'.
   // Load the base mode's env vars and inject via define so import.meta.env stays correct.
@@ -43,7 +43,7 @@ export default defineConfig(({ mode, command }) => {
     plugins: [
       react(),
       federation({
-        name: 'main',
+        name: 'index-studio',
         filename: 'remoteEntry.js',
         exposes: {
           './App': './src/App.tsx',
