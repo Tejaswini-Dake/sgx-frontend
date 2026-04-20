@@ -36,7 +36,7 @@ FROM nginx:1.25-alpine AS production
 RUN rm /etc/nginx/conf.d/default.conf
 
 # Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY infra/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy built static assets from builder
 COPY --from=builder /app/host-app/dist /usr/share/nginx/html
