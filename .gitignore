@@ -15,9 +15,9 @@ pnpm-debug.log*
 *.tmp
 *.temp
 
-# Environment files
-.env
-.env.*
+# Environment files — track templates, ignore local overrides with secrets
+.env.local
+.env.*.local
 
 # IDE folders
 .vscode/
