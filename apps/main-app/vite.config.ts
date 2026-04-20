@@ -37,7 +37,7 @@ export default defineConfig(({ mode, command }) => {
       alias: {
         '@': resolve(__dirname, './src'),
         '@layout': resolve(__dirname, './src/components/layout'),
-        '@theme': resolve(__dirname, '../packages/ui/src/styles/theme.css'),
+        '@theme': resolve(__dirname, '../../packages/ui/src/styles/theme.css'),
       },
     },
     plugins: [

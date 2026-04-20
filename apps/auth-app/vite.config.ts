@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
-        '@theme': resolve(__dirname, '../packages/ui/src/styles/theme.css'),
+        '@theme': resolve(__dirname, '../../packages/ui/src/styles/theme.css'),
       },
     },
     plugins: [

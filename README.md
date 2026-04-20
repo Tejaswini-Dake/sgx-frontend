@@ -33,39 +33,62 @@ The host application dynamically imports remote bundles at runtime, allowing eac
 
 ```
 sgx/
-├── auth-app/
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── vite.config.ts
-│   ├── tailwind.config.mjs
-│   ├── postcss.config.mjs
-│   └── src/
-│       ├── App.tsx
-│       └── main.tsx
-├── host-app/
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── vite.config.ts
-│   ├── tailwind.config.mjs
-│   ├── postcss.config.mjs
-│   └── src/
-│       ├── App.tsx
-│       └── main.tsx
-├── main-app/
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── vite.config.ts
-│   ├── tailwind.config.mjs
-│   ├── postcss.config.mjs
-│   └── src/
-│       ├── App.tsx
-│       └── main.tsx
+├── apps/
+│   ├── auth-app/
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   ├── vite.config.ts
+│   │   ├── tailwind.config.mjs
+│   │   ├── postcss.config.mjs
+│   │   └── src/
+│   │       ├── App.tsx
+│   │       └── main.tsx
+│   ├── host-app/
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   ├── vite.config.ts
+│   │   ├── tailwind.config.mjs
+│   │   ├── postcss.config.mjs
+│   │   └── src/
+│   │       ├── App.tsx
+│   │       └── main.tsx
+│   └── main-app/
+│       ├── index.html
+│       ├── package.json
+│       ├── tsconfig.json
+│       ├── vite.config.ts
+│       ├── tailwind.config.mjs
+│       ├── postcss.config.mjs
+│       └── src/
+│           ├── App.tsx
+│           └── main.tsx
+├── packages/
+│   ├── shared/
+│   └── ui/
+├── infra/
+│   ├── nginx/
+│   │   └── nginx.conf
+│   ├── deploy/
+│   ├── scripts/
+│   │   ├── docker-build.sh
+│   │   ├── ecr-push.sh
+│   │   ├── ecs-deploy.sh
+│   │   └── release.sh
+│   └── docker/
+│       ├── Dockerfile
+│       └── docker-compose.yml
+├── config/
+│   ├── env/
+│   │   └── .env.example
+│   └── tooling/
+│       ├── .prettierrc
+│       └── .prettierignore
 ├── package.json
 ├── package-lock.json
-└── .gitignore
+├── README.md
+└── DEPLOYMENT.md
 ```
 
 ## Prerequisites
@@ -88,9 +111,9 @@ This installs shared dependencies and links the workspace packages.
 Start each app from the root with:
 
 ```bash
-npm --workspace host-app run dev
-npm --workspace auth-app run dev
-npm --workspace main-app run dev
+npm --workspace apps/host-app run dev
+npm --workspace apps/auth-app run dev
+npm --workspace apps/main-app run dev
 ```
 
 Or use the root workspace commands if configured:
@@ -123,7 +146,7 @@ This enables independent deployment and development of each microfrontend while 
 ### `remoteEntry.js` 404 or failed to load
 
 - Verify the remote app is running on the expected port.
-- Confirm the remote URL in `host-app/vite.config.ts` matches the actual remote host and port.
+- Confirm the remote URL in `apps/host-app/vite.config.ts` matches the actual remote host and port.
 - Ensure the remote app exposes `remoteEntry.js` and is not serving it from a different path.
 
 ### Blank screen or missing remote content

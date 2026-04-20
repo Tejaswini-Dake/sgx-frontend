@@ -12,7 +12,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INFRA_DIR="$(dirname "$SCRIPT_DIR")"
 ROOT_DIR="$(dirname "$INFRA_DIR")"
 
-ENV_FILE="$ROOT_DIR/.env.docker"
+ENV_FILE="$ROOT_DIR/config/env/.env.docker"
 if [[ -f "$ENV_FILE" ]]; then
   set -a; source "$ENV_FILE"; set +a
 fi

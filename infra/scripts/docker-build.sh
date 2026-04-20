@@ -13,7 +13,7 @@ INFRA_DIR="$(dirname "$SCRIPT_DIR")"
 ROOT_DIR="$(dirname "$INFRA_DIR")"
 
 # Load .env.docker if present
-ENV_FILE="$ROOT_DIR/.env.docker"
+ENV_FILE="$ROOT_DIR/config/env/.env.docker"
 if [[ -f "$ENV_FILE" ]]; then
   set -a; source "$ENV_FILE"; set +a
 fi
@@ -24,6 +24,7 @@ IMAGE_TAG="$IMAGE_NAME:$ENV"
 echo ">>> Building Docker image: $IMAGE_TAG (BUILD_ENV=$ENV)"
 docker build \
   --build-arg BUILD_ENV="$ENV" \
+  -f "$ROOT_DIR/infra/docker/Dockerfile" \
   -t "$IMAGE_TAG" \
   "$ROOT_DIR"
 

@@ -1,8 +1,8 @@
 services:
   sgx-frontend:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../..
+      dockerfile: infra/docker/Dockerfile
       args:
         BUILD_ENV: ${BUILD_ENV:-prod}
     image: ${IMAGE_NAME:-sgx-frontend}:${BUILD_ENV:-prod}
