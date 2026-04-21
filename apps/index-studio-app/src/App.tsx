@@ -1,5 +1,5 @@
 import { RouterProvider } from 'react-router-dom';
-import { router } from '@/features/router';
+import { router } from '@/router';
 import { BacktestProvider } from '@/contexts/BacktestContext';
 import './index.css';
 

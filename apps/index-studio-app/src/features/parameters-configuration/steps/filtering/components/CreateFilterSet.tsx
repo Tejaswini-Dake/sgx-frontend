@@ -4,7 +4,7 @@ import { useBacktest, FilterRule } from '@/contexts/BacktestContext';
 import { CustomDropdown } from '@/components/CustomDropdown';
 import { Plus, Trash2, ArrowLeft } from 'lucide-react';
 
-export default function CreateFilterSetPage() {
+export default function CreateFilterSet() {
   const navigate = useNavigate();
   const { addFilterSet } = useBacktest();
   const [filters, setFilters] = useState<FilterRule[]>([]);

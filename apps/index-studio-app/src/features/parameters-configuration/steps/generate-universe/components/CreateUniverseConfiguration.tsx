@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useBacktest } from '@/contexts/BacktestContext';
 import { ArrowLeft, Play } from 'lucide-react';
 
-export default function CreateUniverseConfigurationPage() {
+export default function CreateUniverseConfiguration() {
   const navigate = useNavigate();
   const {
     universes,
