@@ -10,7 +10,7 @@ The project is organized into three apps:
 
 - `host` — the shell application and container with routing, running on port `3000`
 - `auth` — authentication-related module, running on port `3001`
-- `main` — primary application module, running on port `3002`
+- `index-studio` — primary application module, running on port `3002`
 
 Each app is developed as a standalone Vite project and shares dependencies using Module Federation.
 
@@ -23,9 +23,9 @@ This architecture uses a host/remote pattern:
 
 In this repo:
 
-- `host` declares remote endpoints for `auth` and `main`
+- `host` declares remote endpoints for `auth` and `index-studio`
 - `auth` exposes its authentication ui via Module Federation
-- `main` exposes the main application ui via Module Federation
+- `index-studio` exposes the main application ui via Module Federation
 
 The host application dynamically imports remote bundles at runtime, allowing each app to be developed and deployed separately.
 
@@ -33,39 +33,62 @@ The host application dynamically imports remote bundles at runtime, allowing eac
 
 ```
 sgx/
-├── auth-app/
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── vite.config.ts
-│   ├── tailwind.config.mjs
-│   ├── postcss.config.mjs
-│   └── src/
-│       ├── App.tsx
-│       └── main.tsx
-├── host-app/
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── vite.config.ts
-│   ├── tailwind.config.mjs
-│   ├── postcss.config.mjs
-│   └── src/
-│       ├── App.tsx
-│       └── main.tsx
-├── main-app/
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── vite.config.ts
-│   ├── tailwind.config.mjs
-│   ├── postcss.config.mjs
-│   └── src/
-│       ├── App.tsx
-│       └── main.tsx
+├── apps/
+│   ├── auth-app/
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   ├── vite.config.ts
+│   │   ├── tailwind.config.mjs
+│   │   ├── postcss.config.mjs
+│   │   └── src/
+│   │       ├── App.tsx
+│   │       └── main.tsx
+│   ├── host-app/
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   ├── vite.config.ts
+│   │   ├── tailwind.config.mjs
+│   │   ├── postcss.config.mjs
+│   │   └── src/
+│   │       ├── App.tsx
+│   │       └── main.tsx
+│   └── index-studio/
+│       ├── index.html
+│       ├── package.json
+│       ├── tsconfig.json
+│       ├── vite.config.ts
+│       ├── tailwind.config.mjs
+│       ├── postcss.config.mjs
+│       └── src/
+│           ├── App.tsx
+│           └── main.tsx
+├── packages/
+│   ├── shared/
+│   └── ui/
+├── infra/
+│   ├── nginx/
+│   │   └── nginx.conf
+│   ├── deploy/
+│   ├── scripts/
+│   │   ├── docker-build.sh
+│   │   ├── ecr-push.sh
+│   │   ├── ecs-deploy.sh
+│   │   └── release.sh
+│   └── docker/
+│       ├── Dockerfile
+│       └── docker-compose.yml
+├── config/
+│   ├── env/
+│   │   └── .env.example
+│   └── tooling/
+│       ├── .prettierrc
+│       └── .prettierignore
 ├── package.json
 ├── package-lock.json
-└── .gitignore
+├── README.md
+└── DEPLOYMENT.md
 ```
 
 ## Prerequisites
@@ -88,9 +111,9 @@ This installs shared dependencies and links the workspace packages.
 Start each app from the root with:
 
 ```bash
-npm --workspace host-app run dev
-npm --workspace auth-app run dev
-npm --workspace main-app run dev
+npm --workspace apps/host-app run dev
+npm --workspace apps/auth-app run dev
+npm --workspace apps/index-studio run dev
 ```
 
 Or use the root workspace commands if configured:
@@ -106,13 +129,13 @@ npm run dev:all
 
 - `host`: `http://localhost:3000`
 - `auth`: `http://localhost:3001`
-- `main`: `http://localhost:3002`
+- `index-studio`: `http://localhost:3002`
 
 ## How Module Federation Works Here
 
-Module Federation allows the `host` app to load remote bundles from the `auth` and `main` apps at runtime.
+Module Federation allows the `host` app to load remote bundles from the `auth` and `index-studio` apps at runtime.
 
-- `auth` and `main` each expose components through a `remoteEntry.js` manifest.
+- `auth` and `index-studio` each expose components through a `remoteEntry.js` manifest.
 - `host` consumes these remotes using configured remote URLs.
 - Shared packages such as `react`, `react-dom`, `react-router-dom`, and `@reduxjs/toolkit` are deduped and loaded as singletons.
 
@@ -123,7 +146,7 @@ This enables independent deployment and development of each microfrontend while 
 ### `remoteEntry.js` 404 or failed to load
 
 - Verify the remote app is running on the expected port.
-- Confirm the remote URL in `host-app/vite.config.ts` matches the actual remote host and port.
+- Confirm the remote URL in `apps/host-app/vite.config.ts` matches the actual remote host and port.
 - Ensure the remote app exposes `remoteEntry.js` and is not serving it from a different path.
 
 ### Blank screen or missing remote content

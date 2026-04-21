@@ -25,10 +25,10 @@ Browser
   └── nginx (port 80)
         ├── /           → host-app  (shell / layout)
         ├── /auth/      → auth-app  (login / sso)
-        └── /main/      → main-app  (dashboard, backtest, universe etc.)
+        └── /index-studio/      → index-studio  (dashboard, parameters-configuration, universe etc.)
 ```
 
-At runtime the host-app shell loads auth-app and main-app as federated remotes via their `remoteEntry.js` files. All three are served from the same nginx container — no cross-origin calls between microfrontends.
+At runtime the host-app shell loads auth-app and index-studio as federated remotes via their `remoteEntry.js` files. All three are served from the same nginx container — no cross-origin calls between microfrontends.
 
 **Tech stack:** React 19 · Vite 7 · Module Federation · React Router v7 · Redux Toolkit · Tailwind CSS · nginx 1.25 · Node 20 (build only)
 
@@ -38,21 +38,22 @@ At runtime the host-app shell loads auth-app and main-app as federated remotes v
 
 ```
 sgx-frontend/
-├── auth-app/                  # Auth microfrontend
-│   ├── .env                   # local defaults
-│   ├── .env.dev
-│   ├── .env.uat
-│   └── .env.prod
-├── main-app/                  # Main microfrontend
-│   ├── .env
-│   ├── .env.dev
-│   ├── .env.uat
-│   └── .env.prod
-├── host-app/                  # Shell (host) app
-│   ├── .env                   # local defaults
-│   ├── .env.dev               # federation remote URLs for dev
-│   ├── .env.uat
-│   └── .env.prod
+├── apps/
+│   ├── auth-app/              # Auth microfrontend
+│   │   ├── .env               # local defaults
+│   │   ├── .env.dev
+│   │   ├── .env.uat
+│   │   └── .env.prod
+│   ├── index-studio-app/              # Main microfrontend
+│   │   ├── .env
+│   │   ├── .env.dev
+│   │   ├── .env.uat
+│   │   └── .env.prod
+│   └── host-app/              # Shell (host) app
+│       ├── .env               # local defaults
+│       ├── .env.dev           # federation remote URLs for dev
+│       ├── .env.uat
+│       └── .env.prod
 ├── packages/
 │   ├── shared/                # Shared utilities (source-only)
 │   └── ui/                    # Shared UI components (source-only)
@@ -63,13 +64,20 @@ sgx-frontend/
 │   │   └── ecs-task-definition.prod.json
 │   ├── nginx/
 │   │   └── nginx.conf             # nginx server config
-│   └── scripts/
-│       ├── docker-build.sh        # Build Docker image
-│       ├── ecr-push.sh            # Push image to ECR
-│       ├── ecs-deploy.sh          # Register task def + deploy to ECS
-│       └── release.sh             # Full pipeline: build → push → deploy
-├── Dockerfile                 # Multi-stage build
-├── docker-compose.yml         # Local Docker testing
+│   ├── scripts/
+│   │   ├── docker-build.sh        # Build Docker image
+│   │   ├── ecr-push.sh            # Push image to ECR
+│   │   ├── ecs-deploy.sh          # Register task def + deploy to ECS
+│   │   └── release.sh             # Full pipeline: build → push → deploy
+│   └── docker/
+│       ├── Dockerfile             # Multi-stage build
+│       └── docker-compose.yml     # Local Docker testing
+├── config/
+│   ├── env/
+│   │   └── .env.example           # Template for config/env/.env.docker
+│   └── tooling/
+│       ├── .prettierrc
+│       └── .prettierignore
 └── package.json               # npm workspaces root
 ```
 
@@ -90,7 +98,7 @@ Vite loads env files at **build time only** — values are baked into the static
 
 ### 3.2 env variables per app
 
-**auth-app** and **main-app** (per environment):
+**auth-app** and **index-studio-app** (per environment):
 
 | Variable | Description | Example |
 |----------|-------------|---------|
@@ -103,25 +111,25 @@ Vite loads env files at **build time only** — values are baked into the static
 |----------|-------------|---------|
 | `VITE_APP_ENV` | Environment label | `dev` |
 | `VITE_AUTH_APP_URL` | auth-app remoteEntry URL | `https://dev-sgx.example.com/auth/remoteEntry.js` |
-| `VITE_MAIN_APP_URL` | main-app remoteEntry URL | `https://dev-sgx.example.com/main/remoteEntry.js` |
+| `VITE_INDEX_STUDIO_APP_URL` | index-studio-app remoteEntry URL | `https://dev-sgx.example.com/index-studio/remoteEntry.js` |
 
-> **Important:** For Docker/ECS deployments, `host-app/.env.<env>` uses relative paths (`/auth/remoteEntry.js`, `/main/remoteEntry.js`) because all microfrontends are served from the same nginx container/domain.
+> **Important:** For Docker/ECS deployments, `apps/host-app/.env.<env>` uses relative paths (`/auth/remoteEntry.js`, `/index-studio/remoteEntry.js`) because all microfrontends are served from the same nginx container/domain.
 
 ### 3.3 Before deploying — update API URLs
 
 Update the following files with real endpoints before building:
 
 ```
-auth-app/.env.dev       → VITE_API_BASE_URL
-auth-app/.env.uat       → VITE_API_BASE_URL
-auth-app/.env.prod      → VITE_API_BASE_URL
+apps/auth-app/.env.dev       → VITE_API_BASE_URL
+apps/auth-app/.env.uat       → VITE_API_BASE_URL
+apps/auth-app/.env.prod      → VITE_API_BASE_URL
 
-main-app/.env.dev       → VITE_API_BASE_URL
-main-app/.env.uat       → VITE_API_BASE_URL
-main-app/.env.prod      → VITE_API_BASE_URL
+apps/index-studio-app/.env.dev       → VITE_API_BASE_URL
+apps/index-studio-app/.env.uat       → VITE_API_BASE_URL
+apps/index-studio-app/.env.prod      → VITE_API_BASE_URL
 ```
 
-Federation URLs in `host-app/.env.*` should remain as relative paths (`/auth/remoteEntry.js`) for container deployments — do not change these.
+Federation URLs in `apps/host-app/.env.*` should remain as relative paths (`/auth/remoteEntry.js`) for container deployments — do not change these.
 
 ---
 
@@ -137,7 +145,7 @@ Federation URLs in `host-app/.env.*` should remain as relative paths (`/auth/rem
 | `npm run start:uat` | Build with uat env + preview locally |
 | `npm run start:prod` | Build with prod env + preview locally |
 
-Local preview ports: host `4000` · auth `4001` · main `4002`
+Local preview ports: host `4000` · auth `4001` · index-studio `4002`
 
 ### 4.2 Build modes
 
@@ -167,7 +175,7 @@ Build output layout inside the nginx container:
 ```
 /usr/share/nginx/html/          ← host-app dist
 /usr/share/nginx/html/auth/     ← auth-app dist
-/usr/share/nginx/html/main/     ← main-app dist
+/usr/share/nginx/html/index-studio/     ← index-studio-app dist
 ```
 
 ### 5.2 Build the image
@@ -182,19 +190,21 @@ chmod +x infra/scripts/*.sh
 ./infra/scripts/docker-build.sh prod
 ```
 
+> The Dockerfile lives at `infra/docker/Dockerfile`; the build context is always the repo root.
+
 This produces a local image tagged `sgx-frontend:dev|uat|prod`.
 
 ### 5.3 Run locally with Docker Compose
 
 ```bash
 # Run dev build on http://localhost:8080
-BUILD_ENV=dev PORT=8080 docker compose up
+BUILD_ENV=dev PORT=8080 docker compose -f infra/docker/docker-compose.yml up
 
 # Run prod build on http://localhost:8080
-BUILD_ENV=prod PORT=8080 docker compose up
+BUILD_ENV=prod PORT=8080 docker compose -f infra/docker/docker-compose.yml up
 
 # Stop
-docker compose down
+docker compose -f infra/docker/docker-compose.yml down
 ```
 
 > Use this to verify the Docker image works correctly before pushing to ECR.
@@ -213,7 +223,7 @@ aws ecr create-repository \
 
 ### 6.2 Configure .env.docker
 
-Create a `.env.docker` file in the project root (never commit this file):
+Create a `config/env/.env.docker` file (copy from `config/env/.env.example`, never commit this file):
 
 ```bash
 # AWS
@@ -271,6 +281,8 @@ infra/deploy/ecs-task-definition.uat.json
 infra/deploy/ecs-task-definition.prod.json
 ```
 
+The `__IMAGE_URI__` placeholder is substituted automatically by `infra/scripts/ecs-deploy.sh` at deploy time.
+
 Replace `__ACCOUNT_ID__` with your actual AWS account ID. The `__IMAGE_URI__` placeholder is substituted automatically by `infra/scripts/ecs-deploy.sh` at deploy time.
 
 Also update `awslogs-region` in each file if your region differs from `ap-southeast-1`.
@@ -317,7 +329,7 @@ This runs all three steps in sequence — docker-build → ecr-push → ecs-depl
 1. Checkout code
 2. Configure AWS credentials
 3. chmod +x infra/scripts/*.sh
-4. Create .env.docker from CI secrets
+4. Create config/env/.env.docker from CI secrets
 5. ./infra/scripts/release.sh <env>
 ```
 
@@ -350,7 +362,7 @@ The nginx config routes requests to the correct app based on URL path:
 |------|--------|---------------|
 | `/health` | Health check response | — |
 | `/auth/*` | auth-app static files | `/auth/index.html` (SPA) |
-| `/main/*` | main-app static files | `/main/index.html` (SPA) |
+| `/index-studio/*` | index-studio-app static files | `/index-studio/index.html` (SPA) |
 | `/*` | host-app static files | `/index.html` (SPA) |
 
 **Caching headers:**
@@ -381,7 +393,7 @@ Used by:
 
 ### remoteEntry.js 404
 - The host-app is trying to load a microfrontend remote that wasn't built or is at the wrong path
-- For container deployments, `host-app/.env.<env>` must use relative paths: `/auth/remoteEntry.js` and `/main/remoteEntry.js`
+- For container deployments, `apps/host-app/.env.<env>` must use relative paths: `/auth/remoteEntry.js` and `/index-studio/remoteEntry.js`
 
 ### ECR push: unauthorized
 - Re-run: `aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account>.dkr.ecr.<region>.amazonaws.com`
